@@ -18,7 +18,7 @@ toc_icon: "bars" # 아이콘 설정
 toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 ---
 
-![chap0_1](/assets/images/chap0_1.jpg) 
+![chap01](/assets/images/chap01.jpg) 
 
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
