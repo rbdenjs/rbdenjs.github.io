@@ -22,12 +22,15 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 
 
 **Data Engineer**
+
 -> 로그를 설계하거나 데이터에 대한 처리 및 저장과 같은 데이터의 환경적인 요소들을 세팅해주는 직군
 
 **Data(Business) Analyst**
+
 -> 데이터를 활용하여 비즈니스적인 측면을 고려하여 어떠한 action plan을 가져갈지 고민하는 직군
 
 **Data(Research) Scientist** 
+
 -> 데이터를 바탕으로 모델을 만들어 새로운 가치를 창출하거나 논문을 연구하거나 집필하는 직군
 
 Jekyll requires blog post files to be named according to the following format:  
