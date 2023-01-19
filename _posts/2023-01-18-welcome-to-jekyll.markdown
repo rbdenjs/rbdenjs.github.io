@@ -20,8 +20,9 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 
 <img src = '/assets/images/chap01.jpg'> 
 
-**p.4 삽입 예정**
+# What is Data Engineer / Analyst / Scientist
 
+**p.4 삽입 예정**
 
 **Data Engineer**
 
@@ -40,6 +41,8 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 -> 최근에는 Data Scientist가 연구하는 모델이 실제로 수익성이 있는지 배포할 수는 있는지와 같은 필요성이 대두되면서 ML/DL Engineer와의 연계성을 무시할 수 없음. 
 
 **p.11 삽입 예정**
+
+<br/>
 
 # MLOps = ML + Operations
 -> 모델을 어떻게 서비스에서 사용할 수 있지?
