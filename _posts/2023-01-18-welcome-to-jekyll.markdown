@@ -18,7 +18,7 @@ toc_icon: "bars" # 아이콘 설정
 toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 ---
 
- ![Alt text](/assets/images/chap0_1.jpg)   #마크다운
+
  <img src="/assets/images/chap0_1.jpg">    #html
 
 
