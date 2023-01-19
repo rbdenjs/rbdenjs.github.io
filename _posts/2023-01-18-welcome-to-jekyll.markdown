@@ -7,7 +7,7 @@ excerpt: "코린이가 MLOps를 시작하게 된 계기"
 date: 2023-01-19 15:26:00 +0900
 
 header:
-  overlay_image: https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80
+  overlay_image: "/assets/images/chap0.jpg"
   overlay_filter: 0.5 # 투명도
 
 
