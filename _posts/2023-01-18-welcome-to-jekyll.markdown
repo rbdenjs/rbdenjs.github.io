@@ -18,11 +18,11 @@ toc_icon: "bars" # 아이콘 설정
 toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 ---
 
-<img src = '/assets/images/chap01.jpg'> 
-
 # What is Data Engineer / Analyst / Scientist
 
-**p.4 삽입 예정**
+
+ ![Alt text](https://user-images.githubusercontent.com/102268412/213915737-15d80d4f-4d75-48aa-b21b-dde8592ff1a0.JPG)  
+
 
 **Data Engineer**
 
@@ -36,31 +36,49 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 
 -> 데이터를 바탕으로 모델을 만들어 새로운 가치를 창출하거나 논문을 연구하거나 집필하는 직군
 
-**p.9 삽입 예정**
+<br/>
+<br/>
+
+![Alt text](https://user-images.githubusercontent.com/102268412/213916085-4e2cad9b-779e-4b1c-8ff2-15622ec94e8d.JPG)  
 
 -> 최근에는 Data Scientist가 연구하는 모델이 실제로 수익성이 있는지 배포할 수는 있는지와 같은 필요성이 대두되면서 ML/DL Engineer와의 연계성을 무시할 수 없음. 
 
-**p.11 삽입 예정**
 
 <br/>
+<br/>
+<br/>
+
 
 # MLOps = ML + Operations
--> 모델을 어떻게 서비스에서 사용할 수 있지?
--> 모델의 버전 관리는 어떻게 해야하지?
--> 학습에 사용된 데이터셋의 버전 관리는 어떻게 해야하지?
+
+![Alt text](https://user-images.githubusercontent.com/102268412/213915900-f27bb0be-cb22-4b08-addd-b2379dc77dc8.JPG) 
+
+-> 모델을 어떻게 서비스에서 사용할 수 있지? <br/>
+-> 모델의 버전 관리는 어떻게 해야하지? <br/>
+-> 학습에 사용된 데이터셋의 버전 관리는 어떻게 해야하지? <br/>
 라는 문제를 해결하기 위함
 
-**p.12 삽입 예정**
+<br/>
+<br/>
 
--> ML을 다루는 데 있어 code는 극히 일부분에 불과하다
+![Alt text](https://user-images.githubusercontent.com/102268412/213916131-1c3aa2e8-619d-4b73-a929-580c5243509e.JPG)
 
-**p.15 삽입 예정**
 
--> 패스트캠퍼스 머신러닝 서비스 구축을 위한실전 MLOps 강의에서 다루는 Tool들이 상당히 많음
+=> ML을 다루는 데 있어 code는 극히 일부분에 불과하다
+
+<br/>
+<br/>
+
+![Alt text](https://user-images.githubusercontent.com/102268412/213916166-9238ed06-cee8-4923-b0fb-2a98ae8116ac.JPG)
+
+-> 패스트캠퍼스 머신러닝 서비스 구축을 위한실전 MLOps 강의에서 다루는 Tool들이 상당히 많음 <br/>
 -> MLOps 분야가 신생 분야이다 보니 Tool들이 정착이 되지 않았음
 
 => Toolset에 갇히기 보다는 근본적인 문제 정의 및 해결 역량에 focus
 
+<br/>
+<br/>
+<br/>
 
 [MLOps란? MLOps 로드맵 및 MLOps 취업에 대한 생각][MLOps란? MLOps 로드맵 및 MLOps 취업에 대한 생각]를 참고하였습니다.
 
