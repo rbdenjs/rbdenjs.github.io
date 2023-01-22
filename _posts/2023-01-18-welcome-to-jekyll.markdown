@@ -37,14 +37,12 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 -> 데이터를 바탕으로 모델을 만들어 새로운 가치를 창출하거나 논문을 연구하거나 집필하는 직군
 
 <br/>
-<br/>
 
 ![Alt text](https://user-images.githubusercontent.com/102268412/213916085-4e2cad9b-779e-4b1c-8ff2-15622ec94e8d.JPG)  
 
 -> 최근에는 Data Scientist가 연구하는 모델이 실제로 수익성이 있는지 배포할 수는 있는지와 같은 필요성이 대두되면서 ML/DL Engineer와의 연계성을 무시할 수 없음. 
 
 
-<br/>
 <br/>
 <br/>
 
@@ -59,14 +57,12 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 라는 문제를 해결하기 위함
 
 <br/>
-<br/>
 
 ![Alt text](https://user-images.githubusercontent.com/102268412/213916131-1c3aa2e8-619d-4b73-a929-580c5243509e.JPG)
 
 
 => ML을 다루는 데 있어 code는 극히 일부분에 불과하다
 
-<br/>
 <br/>
 
 ![Alt text](https://user-images.githubusercontent.com/102268412/213916166-9238ed06-cee8-4923-b0fb-2a98ae8116ac.JPG)
@@ -76,7 +72,6 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 
 => Toolset에 갇히기 보다는 근본적인 문제 정의 및 해결 역량에 focus
 
-<br/>
 <br/>
 <br/>
 
