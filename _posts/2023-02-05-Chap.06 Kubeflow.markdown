@@ -1,0 +1,107 @@
+---
+layout: single
+
+title: "MLOps Chap.7"
+excerpt: "Kubernetes 위의 최적의 MLOps 플랫폼 **Kubeflow** "
+
+date: 2023-01-19 15:26:00 +0900
+
+header:
+  overlay_image: "/assets/images/chap0.jpg"
+  overlay_filter: 0.5 # 투명도
+
+
+# table of contents
+toc: false # 오른쪽 부분에 목차를 자동 생성해준다.
+toc_label: "table of content" # toc 이름 설정
+toc_icon: "bars" # 아이콘 설정
+toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
+---
+
+# What is Katib
+
+### **Katib이란**
+<br/>
+
+ ![Alt text](https://user-images.githubusercontent.com/102268412/216816506-15066dbf-c49b-4944-b28f-025de03a9fc7.png)  
+
+
+-> Auto ML을 위한 Kubernetes-native한 프로젝트로 Hyperparameter Tuning, Early Stopping and Neural Architecture Search를 지원하지만 아직까지는 베타버전이므로 Early Stopping and Neural Architecture Search 관련 기능은 많이 지원하고 있지 않음
+
+<br/>
+
+***
+
+<br/>
+
+### **Hyperparameter Optimizing(HPO)가 필요한 이유**
+
+![Alt text](https://user-images.githubusercontent.com/102268412/216817158-6c43ab8e-4503-4259-ae7b-9613cba40249.png)  
+
+
+-> ML / DL 모델을 사용하다보면 모델에는 Learning rate, the number of layer, optimizer 종류, epoch의 개수, batch 사이즈 등 다양한 hyperparmeter가 들어가므로 hyperparameter가 어떠한 조건일 때 최상의 performance를 내는지 일일이 확인할 수 없음
+
+<br/>
+
+-> 따라서 병렬로 찾아가면서도 고스펙, 고성능의 서버를 다수 사용해서 최대한 시간을 줄이며 hyperparameter 조합을 찾아야 함
+
+<br/>
+
+-> 데이터마다 search algorithm도 다르고 이 과정에서 Kubernetes와 같은 container orchestration system을 활용하면 수많은 병렬 병렬 작업이 가능함
+
+<br/>
+
+-> **ML/DL을 Kubernetes 환경에서 돌릴 때**의 가장 큰 이점임.
+
+<br/>
+
+***
+
+<br/>
+
+### **Katib의 장점** 
+
+1) Cluster Management
+<br/> 
+-> Local에서 HPO를 수행하는 것이 아닌 여러 노드를 합친 Cluster 단위의 HPO를 수행함
+<br/>
+-> 외부 Cluster를 구축하고 관리하는 것은 비용이 상당히 많이 들지만 **Katib**은 Kubernetes-native하게 설계되어 강점이 있음  
+
+2) Agnostic to ML Framework
+<br/> 
+-> HPO를 수행할 모델이 어떻게 구성되었는지에 상관 없이 해당 코드를 컨테이너화할 수만 있다면 Katib의 HPO 기능을 해당 코드의 외부에서도 활용 가능
+
+3) Support Scikit-Optimize, HyperOpt, Optuna, ... 
+<br/>
+-> 자체적으로 HPO search algorithm이 구현된 것이 아니라 외부 library를 Kubernetes 위에서 사용할 수 있게끔 인터페이스를 제공 
+
+<br/>
+
+***
+
+<br/>
+
+### **Katib Concepts** 
+
+
+1) Experiment
+<br/> 
+- Kubeflow pipeline에서의 의미와는 다름
+<br/>
+- Katib에서는 해당 페이지에서 Experiment Auto ML을 의미함  
+- 또한, 한번의 Optimization 과정을 의미함
+<br/>
+- Object function, Hyperparameter Search Space, Hyperparameter Search Algorithm으로 구성되어 있음.
+  * Hyperparameter Search Space : 각 Hyperparameter의 Search space
+  * Hyperparameter Searh Algorithm : Katib에서 제공하는 이미 구현된 algorithm
+
+2) Suggestion
+<br/> 
+- 후보 Hyperparameter 조합 1 set
+- 한 개의 trial이 대응됨
+
+3) Trial
+<br/>
+- 실제 모델을 학습 및 평가 과정 수행
+- 하나의 trial에는 하나의 work job이 대응됨
+  - work job은 컨테이너화 된 모델 학습 및 평가 코드를 실제 돌리는 과정을 의미함
