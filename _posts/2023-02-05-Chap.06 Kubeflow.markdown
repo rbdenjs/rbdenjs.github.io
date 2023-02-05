@@ -40,13 +40,13 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 
 <br/>
 
-- ML / DL 모델을 사용하다보면 모델에는 Learning rate, the number of layer, optimizer 종류, epoch의 개수, batch 사이즈 등 다양한 hyperparmeter가 들어가므로 <u> ***hyperparameter가 어떠한 조건일 때 최상의 performance를 내는지 일일이 확인할 수 없음__*** </u>
+- ML / DL 모델을 사용하다보면 모델에는 Learning rate, the number of layer, optimizer 종류, epoch의 개수, batch 사이즈 등 다양한 hyperparmeter가 들어가므로 ***<u>hyperparameter가 어떠한 조건일 때 최상의 performance를 내는지 일일이 확인할 수 없음</u>***
 
 - 따라서 병렬로 찾아가면서도 고스펙, 고성능의 서버를 다수 사용해서 최대한 시간을 줄이며 hyperparameter 조합을 찾아야 함
 
-- 데이터마다 search algorithm도 다르고 <u> ***이 과정에서 Kubernetes와 같은 container orchestration system을 활용하면 수많은 병렬 병렬 작업이 가능함__*** </u>
+- 데이터마다 search algorithm도 다르고 ***<u>이 과정에서 Kubernetes와 같은 container orchestration system을 활용하면 수많은 병렬 병렬 작업이 가능</u>***
 
-- <u> *__ML/DL을 Kubernetes 환경에서 돌릴 때__*</u>의 가장 큰 이점임.
+- ***<u>ML/DL을 Kubernetes 환경에서 돌릴 때</u>*** 의 가장 큰 이점임.
 
 <br/>
 
@@ -61,10 +61,10 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
     * 외부 Cluster를 구축하고 관리하는 것은 비용이 상당히 많이 들지만 **Katib**은 Kubernetes-native하게 설계되어 강점이 있음  
 
 2. Agnostic to ML Framework
-    * HPO를 수행할 모델이 어떻게 구성되었는지에 상관 없이 해당 코드를 컨테이너화할 수만 있다면 <u>***Katib의 HPO 기능을 해당 코드의 외부에서도 활용 가능__***</u>
+    * HPO를 수행할 모델이 어떻게 구성되었는지에 상관 없이 해당 코드를 컨테이너화할 수만 있다면 ***<u>Katib의 HPO 기능을 해당 코드의 외부에서도 활용 가능</u>***
 
 3. Support Scikit-Optimize, HyperOpt, Optuna, ... 
-    * 자체적으로 HPO search algorithm이 구현된 것이 아니라 <u>***외부 library를 Kubernetes 위에서 사용할 수 있게끔 인터페이스를 제공***</u>
+    * 자체적으로 HPO search algorithm이 구현된 것이 아니라 ***<u>외부 library를 Kubernetes 위에서 사용할 수 있게끔 인터페이스를 제공</u>***
 
 <br/>
 
