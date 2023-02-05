@@ -79,7 +79,7 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
     * Katib에서는 해당 페이지에서 Experiment Auto ML을 의미함  
     * 또한, 한번의 Optimization 과정을 의미함
     * Object function, Hyperparameter Search Space, Hyperparameter Search Algorithm으로 구성되어 있음.
-      * Hyperparameter Search Space : 각 Hyperparameter의 Search space
+      * Hyperparameter Search Space : 각 Hyperparameter의 Search range
       * Hyperparameter Searh Algorithm : Katib에서 제공하는 이미 구현된 algorithm
 
 2. Suggestion
