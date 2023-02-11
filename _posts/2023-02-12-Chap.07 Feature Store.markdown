@@ -1,0 +1,194 @@
+---
+layout: single
+
+title: "MLOps Chap.7"
+excerpt: "Data Scientist와 Data Engineer의 상호작용, **Feature Store** "
+
+date: 2023-01-19 15:26:00 +0900
+
+header:
+  overlay_image: "/assets/images/chap0.jpg"
+  overlay_filter: 0.5 # 투명도
+
+
+# table of contents
+toc: false # 오른쪽 부분에 목차를 자동 생성해준다.
+toc_label: "table of content" # toc 이름 설정
+toc_icon: "bars" # 아이콘 설정
+toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
+---
+
+# ***What is Feature***
+
+### **Feature란**
+ ![Alt text](https://user-images.githubusercontent.com/102268412/218279878-324571dc-5d3d-4f6d-a067-e270980a34da.png)  
+
+* Feautre는 관심 현상에 대해 개별적으로 측정 가능한 속성 또는 특징으로 ML Model의 입력값이다.
+* Feature Data의 예시는 다음과 같다.
+    * a) 단어, 이미지 픽셀, 소리 음파, 센서값
+    * b) 평균, 최대값, 합계, 최솟값 등의 축약값
+    * c) 시간값
+    * d) embedding cluster와 같은 단위 데이터
+
+<br/>
+
+### ***Feature 의 필요성***
+
+* 여러 병합과 변형, 가공 등을 거쳐 만들어진 모델링의 목적에 맞는 feature는 ML Model이 잘 작동하도록 돕는다.
+
+<br/>
+
+### ***ML Pipeline 자동화***
+
+* ML Pipeline은 다음과 같이 구성되어 있다.
+    * Enterprise Data -> Feature Engineering -> Feature Store -> Model Training -> Model Testing -> Model Serving -> Model Monitoring
+    * ***<u>Feature Engineering은 Data Engineers가, Model Training과 Model Testing은 Data Scientists가, Model Serving과 Model Monitoring은 ML Engineers가 담당한다.</u>***
+    * feature들에서 계산되는 그룹들을 나누고, 그 그룹들을 조합하여 훈련에 필요한 데이터셋을 표현하는 **Feature Store**은 ***<u>Data Engineers와 Data Scientists</u>*** 의 상호작용이 일어나는 part이다.
+* ML Pipeline에서도 DevOps 에서의 Code 변경처럼 데이터 변경 시에 자동화된 단계를 시작해야 한다.
+
+<br/>
+
+### ***Feature Pipeline***
+* Data Engineers이 생성하는 Feature Engineering은 각각 다른 대기 시간으로 실행될 것이다.
+* 또한, 숫자나 문자의 혁식, 인코딩 방식, 데이터 구조에 따라 같은 데이터를 두고도 Data Engineers는 각자 다른 관점으로 Feature Engineering을 수행할 것이다.
+* ***따라서 입력하는 데이터 형식만 맞추면 같은 feature를 생성하는 일정한 Feature Pipeline이 필요하다.***
+* 그러나, DevOps Pipeline, Kubeflow와 같은 MLOps Pipeline과는 다르게 Feature Pipeline은 존재하지 않는다. 그 이유로는 보조적인 수단으로만 사용하여 ***전체적인 흐름에서 한정적으로 feature를 확보할 필요성을 못 느끼는 것*** 을 들 수 있다.
+
+<br/>
+
+***
+
+<br/>
+
+# ***What is Feature Store***
+
+### ***Feature Store란***
+<br/>
+
+![Alt text](https://user-images.githubusercontent.com/102268412/218280811-17eaeb64-82b9-4a01-b2ec-603e2bf89537.png)  
+
+<br/>
+
+* 모델 훈련과 배포 과정에서 중복을 줄이기 위해 생겨난 관리형 플랫폼이다.
+* Feature Store이 생겨나기 전에는 임시 스크립트를 사용하여 백엔드 시스템에서 원천 데이터를 가져와서 feature로 변환시키거나 Spark 등에서 원천 데이터에 접근하여 spark pipeline에서 feature를 생성하는 방식으로 feature를 생성하였다.
+* 그러나 동일한 목적의 작업이 발생할 때 마다 이전의 작업들이 중복적으로 이루어지는 문제점이 발생하여 Feature Store의 필요성이 대두되었다.  
+
+<br/>
+
+### ***Feature추출과 제공의 어려움***
+* a) 데이터 원천의 종류에 따라 지원되는 데이터 변형이 다르다.
+* b) App 이 필요한 시간 안에 Feature를 제공하지 못한다.
+* c) Batch, 실시간 데이터, 예측 요청 데이터를 한 번에 처리하는 것이 매우 어렵다
+* d) 데이터 누수에 의해 훈련/제공 데이터의 차이가 발생한다.
+
+> 해결책 : Feature Store 를 통해 필요한 모든 데이터로부터 feature를 추출하고 제공한다.
+
+<br/>
+
+### ***Data Pipeline 에 익숙하지 않은 ML Team***
+
+* 그러나 Feature 데이터를 생성하기 위해서 대부분의 경우 Data Engineers를 필요호 한다.
+* Data Scientists는 Feature에 대한 요구사항을 Data Engineers에게 전달하지만 잦은 요청으로 인해 업무 순위가 늦어지고 Data Engineers는 결국 복잡한 Feature Pipeline을 생성한다.
+* 이를 해결하기 위해 Data Scientists는 직접 데이터를 구축하게 되는데 이때 Data Scientists는 모델 최적화에 할애하는 시간이 줄어들며 모델의 완성도가 떨어진다.
+
+> 해결책 : Data Scientists가 직접 Feature Store를 통해 운영에 필요한 Feature들을 배포한다.
+
+<br/>
+
+### ***표준화되지 않은 데이터로 데이터 관리가 어려움***
+* 동일한 목적을 갖는 ML Model들도 각 Model이 수행하야 하는 서비스의 유형에 따라 feature와 원천 데이터가 다양하여 데이터를 중복으로 사용하게 되므로 관리하기 어렵다.
+
+> 해결책 : Feature Store를 사용하여 Feature들을 데이터 자신의 하나로 관리가 가능하다.
+
+<br/>
+
+***
+
+<br/>
+
+# ***What is Feast***
+
+### ***Feast란***
+<br/>
+
+![Alt text](https://user-images.githubusercontent.com/102268412/218281688-54331de0-1f10-4c1a-9d74-5356e61654f0.png)  
+
+![Alt text](https://user-images.githubusercontent.com/102268412/218281815-618544ee-559c-4f84-bcb4-f35fc47fdf34.JPG)  
+
+
+* 오픈 소스로 사용하기 쉽고 외부 시스템과 통합하기 쉬운 Feature Store의 한 종류
+
+<br/>
+
+### ***Feast의 변화***
+
+<br/>
+
+![Alt text](https://user-images.githubusercontent.com/102268412/218281908-2374dcae-0229-45dc-a81e-565827e01ed8.JPG)  
+![Alt text](https://user-images.githubusercontent.com/102268412/218281910-a60bd371-2425-409c-817f-b06c3eb6d2c0.JPG)
+
+* ***0.9 버전*** 의 경우 Kubernetes 환경에서 ML Pipeline에서 가장 선호하는 요소들을 추가작업 없이 연계하기 위해 Spark, Redis, Postgres 컴포넌트를 띄워야만 feast를 활용가능 하였다.
+* 그러나 ***0.10 버전*** 의 경우 인기나 활용도가 떨어지는 오픈 소스에 대한 의존성이 feast에 대한 접근성을 하락시킨다고 판단하여 별도의 컴포넌트 없이 feast를 활용가능하도록 바뀌었다. 
+
+<br/>
+
+![Alt text](https://user-images.githubusercontent.com/102268412/218282083-97bae41e-9d1a-48f8-92db-7da39c14af3b.JPG)  
+![Alt text](https://user-images.githubusercontent.com/102268412/218282087-0201798d-2a4a-4fb3-808b-93294f42e70f.JPG)
+
+<br/>
+
+### ***Feast 적용 유무에 따른 Pipeline***
+* Feast를 적용하지 않은 경우
+    * 실시간 데이터 처리와 변형을 통한 feature 생성, 모델 훈련과 제공이 하나의 Pipeline에서 이루어지는 End-to-End 시스템
+* Feast를 적용한 경우
+    * Feature 생성, 모델 훈련, 몯델 제공의 3 가지 영역에서 두루 활용
+    * 데이터 변환 유무에 따라서 어떠헌 경우든 역할 수행 가능
+
+<br/>
+
+### ***Feast를 이용해 할 수 있는 일들***
+* ***a) 모델 제공***
+    * 역할 : 예측이 필요할 때 새로운 Feature 값을 제공하는 온라인 제공
+    * 조건 : 낮은 latency의 DB 기반 고성능 APIR를 통한 Responses 필요
+* ***b) 데이터 변환***
+    * 역할 : 새로운 데이터 발행 즉시 Feature로 변환
+    * 방법 : (1) Batch 변형 (2) 실시간 변형 (3) On-demand 변형
+* ***c) 모니터링***
+    * 역할 : ML 서비스들의 전체적인 동작 상태를 나타내는 지표들을 모니터링하고 운영시 파악 가능한 Tool 관리
+    * 조건 : Feature Store의 사용성, 용량, 가용성, 불량 또는 Feature 제공시 throughout, 지연, 에러율에 관련한 지표들 필요
+* ***d) 레지스트르***
+    * 역할 : 표준화된 Feature 정의와 메타데이터 전융 레지스트리
+    * 조건 : 데이터 추가를 위한 일정 및 설정, 데이터 변환 및 저장, Feature 제공이 필요한 경우 언제든지 접근 가능한 제공 API를 위한 자동화된 작업들
+* ***e) 저장소***
+    * 역할 : S3, BigQuery, Snowflake, Redshift와 같은 다양한 Feature 제공 시스템의 요구사항을 지원하는 저장 역할
+    * 방법 : DynamoDB, Redis, Cassandra와 같은 key-value 타입 저장소들이 낮은 latency로 추론할 수 있는 Feature값 제공
+
+<br/>
+
+### ***Feast를 이용해 할 수 없는 일들***
+* ***a) 작업 흐름 관리***
+    * Airflow, Luigi
+* ***b) 데이터 웨어하우스 및 데이터 레이크***
+    * Hive, Snowflake
+* ***c) 데이터 탐색 시스템***
+    * DataHub
+* ***d) 파이프라인 생성***
+    * Kubeflow
+* ***e) Feature Engineering Tool***
+    * Pandas, Spark
+* ***f) 데이터 버전 관리***
+    * DVC, Pachyderm
+* ***g) 모델 제공 및 메타데이터 관리***
+    * Seldon, Bento
+* ***h) 팀 협업 활동***
+
+<br/>
+
+***
+
+<br/>
+
+[Feast 공식 홈페이지][Feast 공식 홈페이지]를 참고하였습니다.
+
+
+[Feast 공식 홈페이지]: https://docs.feast.dev/
