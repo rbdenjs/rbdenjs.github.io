@@ -87,7 +87,7 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 
 ### ***Data Pipeline 에 익숙하지 않은 ML Team***
 
-* 그러나 Feature 데이터를 생성하기 위해서 대부분의 경우 Data Engineers를 필요호 한다.
+* 그러나 Feature 데이터를 생성하기 위해서 대부분의 경우 Data Engineers를 필요로 한다.
 * Data Scientists는 Feature에 대한 요구사항을 Data Engineers에게 전달하지만 잦은 요청으로 인해 업무 순위가 늦어지고 Data Engineers는 결국 복잡한 Feature Pipeline을 생성한다.
 * 이를 해결하기 위해 Data Scientists는 직접 데이터를 구축하게 되는데 이때 Data Scientists는 모델 최적화에 할애하는 시간이 줄어들며 모델의 완성도가 떨어진다.
 
@@ -141,7 +141,7 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 * Feast를 적용하지 않은 경우
     * 실시간 데이터 처리와 변형을 통한 feature 생성, 모델 훈련과 제공이 하나의 Pipeline에서 이루어지는 End-to-End 시스템
 * Feast를 적용한 경우
-    * Feature 생성, 모델 훈련, 몯델 제공의 3 가지 영역에서 두루 활용
+    * Feature 생성, 모델 훈련, 모델 제공의 3 가지 영역에서 두루 활용
     * 데이터 변환 유무에 따라서 어떠헌 경우든 역할 수행 가능
 
 <br/>
@@ -156,7 +156,7 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 * ***c) 모니터링***
     * 역할 : ML 서비스들의 전체적인 동작 상태를 나타내는 지표들을 모니터링하고 운영시 파악 가능한 Tool 관리
     * 조건 : Feature Store의 사용성, 용량, 가용성, 불량 또는 Feature 제공시 throughout, 지연, 에러율에 관련한 지표들 필요
-* ***d) 레지스트르***
+* ***d) 레지스트리***
     * 역할 : 표준화된 Feature 정의와 메타데이터 전융 레지스트리
     * 조건 : 데이터 추가를 위한 일정 및 설정, 데이터 변환 및 저장, Feature 제공이 필요한 경우 언제든지 접근 가능한 제공 API를 위한 자동화된 작업들
 * ***e) 저장소***
