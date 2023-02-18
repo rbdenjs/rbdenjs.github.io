@@ -22,7 +22,7 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 
 ### **Github Actions란**
 
-</br>
+<br/>
 
 ![Alt text](https://i0.wp.com/build5nines.com/wp-content/uploads/2018/01/GitHub-Flow.png)  
 
@@ -33,7 +33,7 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 
 ### ***GIthub Actions의 Workflow***
 
-</br>
+<br/>
 
  ![Alt text](https://lubus.in/wp-content/uploads/2019/01/lubus-github-actions.png)  
 
@@ -79,7 +79,6 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
     * Github-hosted runner는 Azure의 Standard_DS2_v2로 vCPU 2, 메모리 7GB, 임시 스토리지 14GB
     * 자세한 내용은 [Self-hosted runners][Self-hosted runners]참고
 
-Github Action 사용법 정리
 
 <br/>
 
