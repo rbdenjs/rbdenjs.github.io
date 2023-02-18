@@ -1,0 +1,98 @@
+---
+layout: single
+
+title: "MLOps Chap.8"
+excerpt: "개발자들의 Workflows를 자동화하기 위한 플랫폼, **Github Actions** "
+
+date: 2023-01-19 15:26:00 +0900
+
+header:
+  overlay_image: "/assets/images/chap0.jpg"
+  overlay_filter: 0.5 # 투명도
+
+
+# table of contents
+toc: false # 오른쪽 부분에 목차를 자동 생성해준다.
+toc_label: "table of content" # toc 이름 설정
+toc_icon: "bars" # 아이콘 설정
+toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
+---
+
+# ***What is Github Actions***
+
+### **Github Actions란**
+
+</br>
+
+![Alt text](https://i0.wp.com/build5nines.com/wp-content/uploads/2018/01/GitHub-Flow.png)  
+
+* GitHub Actions는 코드 저장소(repository)로 유명한 GitHub에서 제공하는 CI(Continuous Integration, 지속 통합)와 CD(Continuous Deployment, 지속 배포)를 포함한 Workflow 전체를 자동화하기 위해 비교적 최근에 추가된 서비스이다.
+* CI / CD는 Workflow를 구성하는 하나의 요소로 Github Actions이 Ci / CD만을 위한 Tool이라고 생각하면 안된다.
+
+<br/>
+
+### ***GIthub Actions의 Workflow***
+
+</br>
+
+ ![Alt text](https://lubus.in/wp-content/uploads/2019/01/lubus-github-actions.png)  
+
+* Workflow의 예시
+    * a. 코드 테스트
+        * 함수의 결과값이 어떻게 나오는가 확인하며 쿼리를 날리고 데이터가 맞는지 정합성 체크하는 것 등
+    * b. 배포
+        * 서버에 새로운 기능, 버전 등을 배포
+    * C. 기타 자동화하고 싶은 스크립트
+        * 주기적으로 데이터를 수집해 처리
+    * d. 다양한 파이썬 버전에서 실행되는지 확인
+
+<br/>
+
+### ***Github Action Core 개념***
+
+* a. Workflow
+    * 여러 Job으로 구성되고, Event에 의해 트리거될 수 있는 자동화된 프로세스
+    * 최상위 개념
+    * Workflow 파일은 YAML으로 작성되고, Github Repository의 .github/workflows 폴더 아래에 저장됨
+* b. Event
+    * Workflow를 Trigger(실행)하는 특정 활동이나 규칙
+    * ex)
+        * 특정 브랜치로 Push
+        * 특정 브랜치로 Pull Request
+        * 특정 시간대에 반복(Cron)
+        * Webhook을 사용해 외부 이벤트를 통해 실행
+        * 자세한 내용은 [Events that trigger workflows][Events that trigger workflows] 참고
+* c. Job
+    * Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에서 실행됨
+    * 다른 Job에 의존 관계를 가질 수 있고, 독립적으로 병렬 실행도 가능함
+* d. Step
+    * Task들의 집합으로, 커맨드를 날리거나 action을 실행할 수 있음
+* e. Action
+    * Workflow의 가장 작은 블럭(smallest portable building block)
+    * Job을 만들기 위해 Step들을 연결할 수 있음
+    * 재사용이 가능한 컴포넌트
+    * 개인적으로 만든 Action을 사용할 수도 있고, Marketplace에 있는 공용 Action을 사용할 수도 있음
+    * [Github Marketplace][Github Marketplace]와 [Github Actions Repository][Github Actions Repository]에서 확인 가능
+* f. Runner
+    * Gitbub Action Runner 어플리케이션이 설치된 머신으로, Workflow가 실행될 인스턴스
+    * Github에서 호스팅해주는 Github-hosted runner와 직접 호스팅하는 Self-hosted runner로 나뉨
+    * Github-hosted runner는 Azure의 Standard_DS2_v2로 vCPU 2, 메모리 7GB, 임시 스토리지 14GB
+    * 자세한 내용은 [Self-hosted runners][Self-hosted runners]참고
+
+Github Action 사용법 정리
+
+<br/>
+
+***
+
+<br/>
+
+***Reference***
+
+[Github Action 사용법 정리][Github Action 사용법 정리]를 참고하였습니다.
+
+[Events that trigger workflows]: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#external-events-repository_dispatch
+[Github Marketplace]: https://github.com/marketplace?type=actions
+[Github Actions Repository]: https://github.com/actions/events-that-trigger-workflows#external-events-repository_dispatch
+[Self-hosted runners]: https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners
+[Github Action 사용법 정리]: https://zzsza.github.io/development/2020/06/06/github-action/
